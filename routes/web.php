@@ -32,4 +32,10 @@ Route::get('fetch-data', [App\Http\Controllers\ProductController::class, 'fetchd
 Route::get('edit-data/{id}', [App\Http\Controllers\ProductController::class, 'editProduct']);
 Route::post('update-data/{id}',[App\Http\Controllers\ProductController::class, 'updateProduct']);
 Route::delete('delete-product/{id}',[App\Http\Controllers\ProductController::class, 'delete']);
+Route::get('categorie_list',[App\Http\Controllers\CategorieController::class, 'index']);
+Route::post('add-categries',[App\Http\Controllers\CategorieController::class, 'store']);
+Route::get('fetch-categries',[App\Http\Controllers\CategorieController::class, 'fetchCategries']);
+Route::get('editcategries-data/{id}',[App\Http\Controllers\CategorieController::class, 'editCategries']);
+Route::post('update-categriesdata/{id}',[App\Http\Controllers\CategorieController::class, 'updateCategries']);
+Route::delete('delete-categriesdata/{id}',[App\Http\Controllers\CategorieController::class, 'delete']);
 Auth::routes();
