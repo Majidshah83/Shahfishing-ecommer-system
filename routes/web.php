@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('product', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
+Route::post('/add-book', [App\Http\Controllers\ProductController::class, 'store'])->name('add-book');
 Route::get('/index',[MainController::class,'index'])->name('index');
+Route::get('fetch-data', [App\Http\Controllers\ProductController::class, 'fetchdata']);
+Route::get('edit-data/{id}', [App\Http\Controllers\ProductController::class, 'editProduct']);
+Route::post('update-data/{id}',[App\Http\Controllers\ProductController::class, 'updateProduct']);
+Route::delete('delete-product/{id}',[App\Http\Controllers\ProductController::class, 'delete']);
+Auth::routes();
