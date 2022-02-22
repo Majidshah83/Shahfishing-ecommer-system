@@ -74,9 +74,9 @@ public function updateProduct(Request $request,$id)
     if($request->hasfile('image'))
     { 
     $path='ProductImages/'.$product->image;
-        if(File::exits($path))
+        if(File::exists($path))
         {
-          File::delete();
+          File::delete($path);
         }
         $file=$request->file('image');
         $extension = $file->getClientOriginalExtension();
